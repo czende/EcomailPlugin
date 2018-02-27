@@ -80,7 +80,7 @@ class NewsletterSubscriptionHandler
             }
         } else {
             if ($response['subscriber']['status'] !== 1) {
-                $this->exportNewEmail($email);
+                $this->exportExistingEmail($email);
             }
         }
     }
@@ -114,6 +114,18 @@ class NewsletterSubscriptionHandler
         $response = $this->ecomail->addSubscriber($this->listId, [
             'subscriber_data' => [
                 'email' => $email
+            ]
+        ]);
+    }
+
+    /**
+     * @param string $email
+     */
+    private function exportExistingEmail($email) {
+        $response = $this->ecomail->updateSubscriber($this->listId, [
+            'email' => $email,
+            'subscriber_data' => [
+                'status' => 1
             ]
         ]);
     }
