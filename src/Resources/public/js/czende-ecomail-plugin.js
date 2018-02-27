@@ -25,6 +25,7 @@
                     .done(function (response) {
                         if (response.hasOwnProperty('message')) {
                             successElement.html(response.message);
+                            form.find('#newsletter-email').val('');
                             form.removeClass('loading');
                             form.removeClass('invalid');
                             form.addClass('valid');
