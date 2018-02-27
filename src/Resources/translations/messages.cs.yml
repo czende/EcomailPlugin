@@ -1,0 +1,7 @@
+czende:
+    ecomail_plugin:
+        newsletter: Newsletter
+        subscribe: Odeslat
+        your_email_address: Váš e-mail
+        subscribed_successfully: Úspěšně jste se přihlásili k odběru novinek.
+        invalid_csrf_token: Nevalidní CSRF token.

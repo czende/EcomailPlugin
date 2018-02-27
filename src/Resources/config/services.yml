@@ -1,0 +1,35 @@
+services:
+    czende.ecomail_plugin.validator.email_validator:
+        class: Czende\EcomailPlugin\Validator\NewsletterValidator
+        arguments:
+            - "@validator"
+            - "@sylius.manager.customer"
+
+    czende.ecomail_plugin.ecomail:
+        class: Ecomail
+        arguments:
+            - "%ecomail_api_key%"
+
+    czende.ecomail_plugin.handler.newsleter_subscription_handler:
+        class: Czende\EcomailPlugin\Handler\NewsletterSubscriptionHandler
+        arguments:
+            - "@sylius.repository.customer"
+            - "@sylius.factory.customer"
+            - "@sylius.manager.customer"
+            - "@czende.ecomail_plugin.ecomail"
+            - "%ecomail_list_id%"
+
+    czende.ecomail_plugin.validator.unique_newsletter_email_validator:
+        class: Czende\EcomailPlugin\Validator\Constraints\UniqueNewsletterEmailValidator
+        arguments:
+            - "@sylius.repository.customer"
+        tags:
+            - { name: "validator.constraint_validator" }
+
+    czende.ecomail_plugin.event_listener.customer_listener:
+        class: Czende\EcomailPlugin\EventListener\CustomerNewsletterListener
+        arguments:
+            - "@czende.ecomail_plugin.handler.newsleter_subscription_handler"
+        tags:
+            - { name: "kernel.event_listener", event: "sylius.customer.post_register", method: customerCreateEvent }
+            - { name: "kernel.event_listener", event: "sylius.customer.pre_update", method: customerUpdateEvent }

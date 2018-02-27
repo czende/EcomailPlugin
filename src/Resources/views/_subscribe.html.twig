@@ -1,0 +1,14 @@
+<form action="{{ path('czende_ecomail_plugin_newsletter_subscribe') }}" method="POST" class="form-banner" id="newsletter-form">
+    <div class="success-element"></div>
+    <div class="validation-element"></div>
+    <div class="inline field">
+        <input type="text"
+               id="newsletter-email" name="email"
+               placeholder="{{ 'czende.ecomail_plugin.your_email_address'|trans }}"
+        />
+        <input type="hidden" id="newsletter-token" name="_token" value="{{ csrf_token('newsletter') }}">
+        <button title="{{ 'czende.ecomail_plugin.subscribe' }}" type="submit">
+            {{ 'czende.ecomail_plugin.subscribe'|trans }}
+        </button>
+    </div>
+</form>

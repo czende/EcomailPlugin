@@ -1,0 +1,5 @@
+czende:
+    ecomail_plugin:
+        invalid_email: Nesprávný formát e-mailu.
+        email_not_blank: Prosím vložte Váš e-mail.
+        unique_email: Zadaný e-mail je již přihlášen k odběry novinek.
