@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @author  Jan Czernin <jan.czernin@gmail.com>
  */
-final class NewsletterController extends FOSRestController {
+final class EcomailController extends FOSRestController {
     
     /**
      * Subscribe to newsletter action
