@@ -7,6 +7,8 @@
             form.submit(function (event) {
                 event.preventDefault();
 
+                form.addClass('loading');
+
                 var successElement = form.find('.success-element');
                 var validationElement = form.find('.validation-element');
 
@@ -21,6 +23,7 @@
                     .done(function (response) {
                         if (response.hasOwnProperty('message')) {
                             successElement.html(response.message);
+                            form.removeClass('loading');
                         }
                     })
                     .fail(function (response) {
@@ -33,6 +36,7 @@
                             });
 
                             validationElement.text(message);
+                            form.removeClass('loading');
                         }
                     });
             });
