@@ -1,4 +1,4 @@
-czende_ecomail_plugin_subscribe:
+czende_ecomail_plugin_newsletter_subscribe:
     path: /newsletter/subscribe
     methods: ["POST", "PATCH"]
     defaults:
