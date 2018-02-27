@@ -70,17 +70,11 @@ class NewsletterSubscriptionHandler
 
         if ($customer instanceof CustomerInterface) {
             $this->updateCustomer($customer);
-        } else {
-            $this->createNewCustomer($email);
-        }
+        } 
 
         $response = $this->ecomail->getSubscriber($this->listId, $email);
         
-        if (!is_array($response)) {
-            if (strpos($response, 'not') !== false) {
-                $this->exportNewEmail($email);
-            }
-        } else {
+        if (strpos($response, 'not') !== false) {
             $this->exportNewEmail($email);
         }
     }
