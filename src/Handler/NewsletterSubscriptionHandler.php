@@ -74,8 +74,14 @@ class NewsletterSubscriptionHandler
 
         $response = $this->ecomail->getSubscriber($this->listId, $email);
         
-        if (strpos($response, 'not') !== false) {
-            $this->exportNewEmail($email);
+        if (!is_array($response)) {
+            if (strpos($response, 'not') !== false) {
+                $this->exportNewEmail($email);
+            }
+        } else {
+            if ($response['subscriber']['status'] !== 1) {
+                $this->exportNewEmail($email);
+            }
         }
     }
 
@@ -110,12 +116,6 @@ class NewsletterSubscriptionHandler
                 'email' => $email
             ]
         ]);
-
-        Assert::keyExists($response, 'already_subscribed');
-
-        if ($response['already_subscribed'] !== false) {
-            throw new BadRequestHttpException();
-        }
     }
 
     /**
