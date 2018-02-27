@@ -52,10 +52,12 @@ $ bin/console assets:install --symlink
 
 2. Override default sylius javascript template
 
-```html
-<script src="{{ asset(path) }}"></script>
-<script src="{{ asset('bundles/ecomailplugin/czende-ecomail-plugin.js') }}"></script>
-<script>
-    $('#newsletter-form').joinNewsletter();
-</script>
+```twig
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/ecomailplugin/czende-ecomail-plugin.js') }}"></script>
+    <script>
+        $('#newsletter-form').joinNewsletter();
+    </script>
+{% endblock %}
 ```
