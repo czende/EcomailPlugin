@@ -76,9 +76,7 @@ class NewsletterSubscriptionHandler
 
         $response = $this->ecomail->getSubscriber($this->listId, $email);
         
-        Assert::keyExists($response, 'status');
-
-        if ($response['status'] === Response::HTTP_NOT_FOUND) {
+        if (strpos($response, 'not') !== false) {
             $this->exportNewEmail($email);
         }
     }

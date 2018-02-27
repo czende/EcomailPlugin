@@ -55,7 +55,7 @@ $ bin/console assets:install --symlink
 ```twig
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/ecomailplugin/czende-ecomail-plugin.js') }}"></script>
+    <script src="{{ asset('bundles/ecomailplugin/js/czende-ecomail-plugin.js') }}"></script>
     <script>
         $('#newsletter-form').joinNewsletter();
     </script>
