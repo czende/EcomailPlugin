@@ -24,6 +24,8 @@
                         if (response.hasOwnProperty('message')) {
                             successElement.html(response.message);
                             form.removeClass('loading');
+                            form.removeClass('invalid');
+                            form.addClass('valid');
                         }
                     })
                     .fail(function (response) {
@@ -37,6 +39,8 @@
 
                             validationElement.text(message);
                             form.removeClass('loading');
+                            form.removeClass('valid');
+                            form.addClass('invalid');
                         }
                     });
             });
