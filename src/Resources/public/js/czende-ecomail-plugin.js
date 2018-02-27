@@ -8,6 +8,8 @@
                 event.preventDefault();
 
                 form.addClass('loading');
+                form.removeClass('valid');
+                form.removeClass('invalid');
 
                 var successElement = form.find('.success-element');
                 var validationElement = form.find('.validation-element');
